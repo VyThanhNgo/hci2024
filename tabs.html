@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management & Student Exercises</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #E0F2F1;
+            margin: 0;
+            padding: 0;
+            color: #212121;
+            transition: background-color 0.3s ease;
+        }
+        header {
+            background-color: #00796B;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            text-decoration: underline;
+            color: #E0F2F1; /* Lighten color on hover */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #004D40;
+        }
+        label {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #004D40;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            border: 1px solid #00796B;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00796B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #004D40;
+        }
+        .dashboard {
+            margin-top: 40px;
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .filters select {
+            padding: 10px;
+            border: 1px solid #004D40;
+            border-radius: 5px;
+        }
+        .exercise, .course {
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #E0F7FA;
+            border-left: 5px solid #00796B;
+            border-radius: 5px;
+        }
+        .exercise h3, .course h3 {
+            margin: 0;
+            color: #00796B;
+        }
+        .exercise p, .course p {
+            margin: 5px 0;
+        }
+        .exercise .difficulty {
+            font-weight: bold;
+            color: #FF6F00;
+        }
+        /* Icon styles */
+        .exercise button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .exercise button i {
+            margin-right: 5px;
+        }
+    </style>
+    <script>
+        let isLoggedIn = false; // Variable to track login status
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => {
+                section.style.display = 'none'; // Hide all sections
+            });
+
+            // Check if the user is logged in
+            if (sectionId === 'course-section' || sectionId === 'exercise-section') {
+                if (!isLoggedIn) {
+                    alert('Please log in to access this section.');
+                    showSection('login-section'); // Show the login section
+                    return;
+                }
+            }
+            document.getElementById(sectionId).style.display = 'block'; // Show the selected section
+        }
+
+        // Handle login form submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            isLoggedIn = true; // Set login status to true
+            alert('Login successful!'); // Simulate successful login
+            showSection('course-section'); // Show the course section after login
+        }
+
+        // Initialize the page to show only the login section by default
+        window.onload = function() {
+            showSection('login-section');
+        };
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Course Management & Student Exercises</h1>
+        <nav>
+            <a href="javascript:void(0);" onclick="showSection('course-section')"><i class="fas fa-book"></i> Course Management (Lab 1)</a>
+            <a href="javascript:void(0);" onclick="showSection('exercise-section')"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <div id="login-section" class="container">
+        <h2>Login</h2>
+        <form onsubmit="handleLogin(event)">
+            <label for="username">Username/Email</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Login</button>
+            <p style="text-align: center; margin-top: 10px;">
+                <a href="#" style="color: #00796B; text-decoration: none;">Forgot Password?</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- Course Management Section (Lab 1) -->
+    <div id="course-section" class="container" style="display: none;">
+        <h2>Create a New Course</h2>
+        <form>
+            <label for="course_id">Course ID (Auto-generated)</label>
+            <input type="text" id="course_id" readonly value="12345">
+
+            <label for="course_name">Course Name (Required)</label>
+            <input type="text" id="course_name" maxlength="255" required>
+
+            <label for="course_description">Course Description (Optional)</label>
+            <textarea id="course_description" rows="5"></textarea>
+
+            <label for="created_by">Instructor</label>
+            <select id="created_by">
+                <option value="1">John Doe</option>
+                <option value="2">Jane Smith</option>
+            </select>
+
+            <label for="created_at">Created At (Auto-generated)</label>
+            <input type="text" id="created_at" readonly value="2024-10-01">
+
+            <label for="updated_at">Last Updated (Auto-generated)</label>
+            <input type="text" id="updated_at" readonly value="2024-10-05">
+
+            <button type="submit">Create Course</button>
+        </form>
+    </div>
+
+    <!-- Student Exercises Section (Lab 2) -->
+    <div id="exercise-section" class="container" style="display: none;">
+        <h2>Programming Exercises</h2>
+        <div class="filters">
+            <label for="language-filter">Filter by Language:</label>
+            <select id="language-filter">
+                <option value="all">All Languages</option>
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+            </select>
+        </div>
+        
+        <!-- Example Exercises -->
+        <div class="exercise">
+            <h3>Exercise 1: Reverse a String</h3>
+            <p><strong>Language:</strong> Python</p>
+            <p class="difficulty">Difficulty: Easy</p>
+            <button onclick="alert('Opening Exercise 1...')"><i class="fas fa-play"></i> Start Exercise</button>
+        </div>
+        <div class="exercise">
+            <h3>Exercise 2: Find the Factorial</h3>
+            <p><strong>Language:</strong> C</p>
+            <p class="difficulty">Difficulty: Medium</p>
+            <button onclick="alert('Opening Exercise 2...')">Start Exercise</button>
+        </div>
+        <div class="exercise">
+            <h3>Exercise 3: Binary Search</h3>
+            <p><strong>Language:</strong> Java</p>
+            <p class="difficulty">Difficulty: Hard</p>
+            <button onclick="alert('Opening Exercise 3...')">Start Exercise</button>
+        </div>
+    </div>
+
+</body>
+</html>

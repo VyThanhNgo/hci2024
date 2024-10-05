@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System - About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #E0F2F1, #B2DFDB);
+            margin: 0;
+            padding: 0;
+            color: #212121;
+        }
+
+        header {
+            background-color: #00796B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD54F;
+        }
+
+        nav a i {
+            margin-right: 8px;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .content h2 {
+            color: #004D40;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cv-section {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 0.5s; /* Animation for content */
+        }
+
+        .cv-section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cv-container h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #00796B;
+            text-align: center;
+            transition: color 0.3s; /* Transition for heading */
+        }
+
+        .cv-container h1:hover {
+            color: #004D40; /* Change color on hover */
+        }
+
+        .cv-container h2 {
+            font-size: 28px;
+            color: #00796B;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #00796B;
+            padding-bottom: 5px;
+        }
+
+        .cv-section .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cv-section .contact-info i {
+            margin-right: 10px;
+            color: #00796B;
+        }
+
+        .cv-section .section {
+            margin-bottom: 30px;
+        }
+
+        .cv-section ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .cv-section li {
+            padding: 5px 0;
+            transition: color 0.3s; /* Transition for list items */
+        }
+
+        .cv-section li:hover {
+            color: #00796B; /* Change color on hover */
+        }
+
+        footer {
+            background-color: #004D40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><i class="fas fa-info-circle"></i> About Us</h1>
+        <nav>
+            <a href="home.html"><i class="fas fa-tachometer-alt"></i>Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i>About</a>
+            <a href="tabs.html"><i class="fas fa-list-alt"></i>Tabs</a>
+        </nav>
+    </header>
+    <div class="content">
+        <h2>Our Mission</h2>
+        <p>This Course Management System is designed to help educators efficiently manage courses while providing students with the tools to track their programming exercises in languages like C, Python, and Java.</p>
+        
+        <div class="cv-section">
+            <div class="cv-container">
+                <h1>Ngo Thanh Vy</h1>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: vy@example.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: (123) 456-7890</p>
+                </div>
+                <div class="section">
+                    <h2>Education</h2>
+                    <ul>
+                        <li>Bachelor of Computer Science</li>
+                        <li>University of Technology</li>
+                        <li>Graduated: 2023</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2>Experience</h2>
+                    <ul>
+                        <li>Intern at ABC Tech - Developed web applications</li>
+                        <li>Freelancer - Assisted in multiple projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

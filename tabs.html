@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/java/java.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>Course Management System</h1>
+            <nav>
+                <a href="javascript:void(0);" onclick="showSection('course-section')"><i class="fas fa-book"></i> Course Mnagement (Lab 1)</a>
+                <a href="javascript:void(0);" onclick="showSection('exercise-section')"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+                <a href="javascript:void(0);" onclick="showSection('materials-section')"><i class="fas fa-share-alt"></i> Share Materials (Lab 3)</a>
+                <a href="javascript:void(0);" onclick="showSection('applications-section')"><i class="fas fa-book-open"></i> Integration Applications (Lab 4)</a>
+                <a href="lab5.html"><i class="fas fa-book-open"></i> My Learning (Lab 5)</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+
+    <!-- Course Management Section (Lab 1) -->
+    <div id="course-section" class="container" style="display: block;">
+        <h2>Create a New Course</h2>
+        <form>
+            <label for="course_id">Course ID (Auto-generated)</label>
+            <input type="text" id="course_id" readonly value="12345">
+            <label for="course_name">Course Name (Required)</label>
+            <input type="text" id="course_name" maxlength="255" required>
+            <label for="course_description">Course Description (Optional)</label>
+            <textarea id="course_description" rows="5"></textarea>
+            <label for="created_by">Instructor</label>
+            <select id="created_by">
+                <option value="1">John Doe</option>
+                <option value="2">Jane Smith</option>
+            </select>
+            <label for="created_at">Created At (Auto-generated)</label>
+            <input type="text" id="created_at" readonly value="2024-10-01">
+            <label for="updated_at">Last Updated (Auto-generated)</label>
+            <input type="text" id="updated_at" readonly value="2024-10-05">
+            <button type="submit">Create Course</button>
+        </form>
+    </div>
+
+   <!-- Student Exercises Section (Lab 2) -->
+   <div id="exercise-section" class="container" style="display: none;">
+        <h2>Programming Exercises</h2>
+        <!-- Filters -->
+        <div class="filters">
+            <label for="language-filter">Filter by Language:</label>
+            <select id="language-filter" onchange="filterExercises()">
+                <option value="all">All Languages</option>
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+            </select>
+            <label for="search-filter">Search Exercises:</label>
+            <input type="text" id="search-filter" onkeyup="searchExercises()" placeholder="Search by keywords...">
+        </div>
+        <!-- Exercise List -->
+        <div id="exercise-list">
+            <div class="exercise" data-language="python">
+                <h3>Exercise 1: Reverse a String</h3>
+                <p class="description">Write a program to reverse a given string.</p>
+                <p><strong>Language:</strong> Python</p>
+                <p class="difficulty">Difficulty: Easy</p>
+                <p class="status">Status: Not Started</p>
+                <button onclick="selectExercise(1)">Start Exercise</button>
+            </div>
+            <div class="exercise" data-language="c">
+                <h3>Exercise 2: Find the Factorial</h3>
+                <p class="description">Calculate the factorial of a number.</p>
+                <p><strong>Language:</strong> C</p>
+                <p class="difficulty">Difficulty: Medium</p>
+                <p class="status">Status: In Progress</p>
+                <button onclick="selectExercise(2)">Start Exercise</button>
+            </div>
+            <div class="exercise" data-language="java">
+                <h3>Exercise 3: Binary Search</h3>
+                <p class="description">Implement a binary search algorithm.</p>
+                <p><strong>Language:</strong> Java</p>
+                <p class="difficulty">Difficulty: Hard</p>
+                <p class="status">Status: Completed</p>
+                <button onclick="selectExercise(3)">Start Exercise</button>
+            </div>
+        </div>
+        <!-- Coding Environment (Initially hidden) -->
+        <div id="coding-environment" style="display: none;">
+            <h2 id="exercise-title"></h2>
+            <p id="exercise-description"></p>
+            <div>
+                <label for="language-switcher">Select Language:</label>
+                <select id="language-switcher" onchange="updateTemplate()">
+                    <option value="python">Python</option>
+                    <option value="c">C</option>
+                    <option value="java">Java</option>
+                </select>
+            </div>
+            <textarea id="code-editor" rows="10" placeholder="Write your code here..."></textarea>
+            <div class="buttons">
+                <button onclick="runCode()">Run Code</button>
+                <button onclick="clearCode()">Clear Code</button>
+                <button onclick="submitCode()">Submit Code</button>
+            </div>
+            <div id="output-section">
+                <h3>Output</h3>
+                <pre id="output"></pre>
+            </div>
+            <div id="test-cases">
+                <h3>Test Cases</h3>
+                <div class="test-case">
+                    <label>Input:</label>
+                    <input type="text" id="test-input" placeholder="Enter test case input...">
+                    <button onclick="runTestCase()">Run Test Case</button>
+                </div>
+                <div id="test-results"></div>
+            </div>
+            <div id="submission-results" style="display: none;">
+                <h3>Submission Results</h3>
+                <p id="submission-status"></p>
+                <pre id="submission-output"></pre>
+                <div id="test-case-results"></div>
+                <p id="score"></p>
+                <div class="performance-metrics">
+                    <p id="time-taken"></p>
+                    <p id="memory-used"></p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button onclick="returnToExercises()">Return to Exercises</button>
+                <button onclick="leaveFeedback()">Leave Feedback</button>
+                <button onclick="requestHint()">Get Hint</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const exercises = [
+            {
+                id: 1,
+                title: "Reverse a String",
+                description: "Write a program to reverse a given string.",
+                language: "python",
+                testCases: [
+                    { input: "hello", expected: "olleh" },
+                    { input: "world", expected: "dlrow" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Find the Factorial",
+                description: "Calculate the factorial of a number.",
+                language: "c",
+                testCases: [
+                    { input: "5", expected: "120" },
+                    { input: "0", expected: "1" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Binary Search",
+                description: "Implement a binary search algorithm.",
+                language: "java",
+                testCases: [
+                    { input: "[1, 2, 3, 4, 5], 3", expected: "2" },
+                    { input: "[1, 2, 3, 4, 5], 6", expected: "-1" }
+                ]
+            }
+        ];
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.getElementById("course-section").style.display = "none";
+            document.getElementById("exercise-section").style.display = "none";
+            document.getElementById("materials-section").style.display = "none";
+            document.getElementById("applications-section").style.display = "none";
+
+
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        function hideAllSections() {
+            document.getElementById("course-section").style.display = "none";
+            document.getElementById("exercise-section").style.display = "none";
+
+
+            // Add additional logic if needed to show Lab 3 materials
+        }
+
+        function selectExercise(exerciseId) {
+            const exercise = exercises.find(ex => ex.id === exerciseId);
+            document.getElementById("exercise-title").innerText = exercise.title;
+            document.getElementById("exercise-description").innerText = exercise.description;
+            document.getElementById("coding-environment").style.display = "block";
+        }
+
+        function returnToExercises() {
+            document.getElementById("coding-environment").style.display = "none";
+        }
+
+        // Additional functions (runCode, clearCode, submitCode, runTestCase, etc.) would go here
+    </script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
+
+</script>
+
+<!-- Share Learning Materials Section (Lab 3) -->
+       <div id="materials-section" class="container" style="display: none;">
+<header>
+        <h1>Share Learning Materials</h1>
+        <p>Select a subject to view materials</p>
+    </header>
+    <section class="subjects">
+        <div class="subject-card">
+            <div class="subject-icon">🐍</div> <!-- Python icon -->
+            <h2>Python</h2>
+            <button onclick="showMaterials('python')">View Materials</button>
+        </div>
+        <div class="subject-card">
+            <div class="subject-icon">💻</div> <!-- C icon -->
+            <h2>C</h2>
+            <button onclick="showMaterials('c')">View Materials</button>
+        </div>
+        <div class="subject-card">
+            <div class="subject-icon">☕</div> <!-- Java icon -->
+            <h2>Java</h2>
+            <button onclick="showMaterials('java')">View Materials</button>
+        </div>
+    </section>
+    <section id="materials" class="materials-section" style="display: none;">
+        <h3>Study Materials</h3>
+        <div id="lecture" class="material-item"></div>
+        <div id="exercise" class="material-item"></div>
+        <div id="reference" class="material-item"></div>
+    </section>
+</div>
+
+<script>
+    function showMaterials(subject) {
+        document.getElementById('materials').style.display = 'block';
+        
+        // Clear previous content
+        document.getElementById('lecture').innerHTML = '';
+        document.getElementById('exercise').innerHTML = '';
+        document.getElementById('reference').innerHTML = '';
+
+        // Define icons and PDF links
+        const icons = {
+            python: '🐍', // Python icon
+            c: '💻',      // C icon
+            java: '☕'    // Java icon
+        };
+
+        const pdfLinks = {
+            python: {
+                lecture: 'https://do1.dr-chuck.com/pythonlearn/EN_us/pythonlearn.pdf', // Python Lecture
+                exercise: 'https://www.hackinscience.org/exercises', // Python Exercises (external exercises link)
+                reference: 'https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf' // Python Reference
+            },
+            c: {
+                lecture: 'https://www.vssut.ac.in/lecture_notes/lecture1424354156.pdf', // C Lecture
+                exercise: 'https://www.w3schools.com/c/c_exercises.php', // C Exercises (external exercises link)
+                reference: 'https://en.wikibooks.org/wiki/C_Programming/Standard_library_reference' // C Reference
+            },
+            java: {
+                lecture: 'https://www.tutorialspoint.com/java/java_tutorial.pdf', // Java Lecture
+                exercise: 'https://www.w3schools.com/java/exercise.asp', // Java Exercises (external exercises link)
+                reference: 'https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf' // Java Reference
+            }
+        };
+
+        // Update materials based on subject
+        if (subject === 'python') {
+            document.getElementById('lecture').innerHTML = `<span>${icons.python}</span><a href="${pdfLinks.python.lecture}" target="_blank">Python Lecture</a>`;
+            document.getElementById('exercise').innerHTML = `<span>${icons.python}</span><a href="${pdfLinks.python.exercise}" target="_blank">Python Exercises</a>`;
+            document.getElementById('reference').innerHTML = `<span>${icons.python}</span><a href="${pdfLinks.python.reference}" target="_blank">Python Reference</a>`;
+        } else if (subject === 'c') {
+            document.getElementById('lecture').innerHTML = `<span>${icons.c}</span><a href="${pdfLinks.c.lecture}" target="_blank">C Lecture</a>`;
+            document.getElementById('exercise').innerHTML = `<span>${icons.c}</span><a href="${pdfLinks.c.exercise}" target="_blank">C Exercises</a>`;
+            document.getElementById('reference').innerHTML = `<span>${icons.c}</span><a href="${pdfLinks.c.reference}" target="_blank">C Reference</a>`;
+        } else if (subject === 'java') {
+            document.getElementById('lecture').innerHTML = `<span>${icons.java}</span><a href="${pdfLinks.java.lecture}" target="_blank">Java Lecture</a>`;
+            document.getElementById('exercise').innerHTML = `<span>${icons.java}</span><a href="${pdfLinks.java.exercise}" target="_blank">Java Exercises</a>`;
+            document.getElementById('reference').innerHTML = `<span>${icons.java}</span><a href="${pdfLinks.java.reference}" target="_blank">Java Reference</a>`;
+        }
+    }
+</script>
+    </div>
+</div>
+<!-- Section (Lab 4) -->
+<div id="applications-section" class="container" style="display: none;">
+<body>
+<header>
+    <nav>
+        <ul>
+            <li>Business Operations</li>
+            <li>Cloud Computing</li>
+            <li>Cybersecurity</li>
+            <li>Data Science</li>
+            <li>Development</li>
+            <li>IT Operations</li>
+            <li>Language Learning</li>
+            <li>Leadership & Management</li>
+            <li>Marketing</li>
+        </ul>
+    </nav>
+    <div class="user-info">
+        <div class="avatar">N</div>
+        <div class="welcome">
+            <p>Welcome back, Ngo Thanh Vy</p>
+            <a href="#">Add occupation and interests</a>
+        </div>
+    </div>
+</header>
+
+<section class="dashboard">
+    <div class="streak-container">
+        <div class="streak-header">
+            <i class="fas fa-fire streak-icon"></i> <!-- Weekly streak icon -->
+            <h2>Weekly Streak</h2>
+            <p>One ring down, one to go. Keep it up!</p>
+        </div>
+        <div class="streak-info">
+            <div class="streak-count">
+                <h3>2 Weeks</h3>
+                <span>Current Streak</span>
+            </div>
+            <div class="streak-details">
+                <div class="course-min">
+                    <i class="fas fa-book-open"></i> <!-- Course icon -->
+                    <p><strong>11/30</strong> course min</p>
+                </div>
+                <div class="visits">
+                    <i class="fas fa-user-check"></i> <!-- Visit icon -->
+                    <p><strong>4/1</strong> visits</p>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="activity-link">See all activity</a>
+    </div>    
+  </section>
+  
+    <div class="learning">
+        <h2>Pick up where you left off</h2>
+        <!-- Tabs for navigation -->
+        <div class="tabs">
+            <button class="tab-btn active">Courses</button>
+            <button class="tab-btn">Learning paths</button>
+            <button class="tab-btn">Certification preparation</button>
+        </div>
+        <div class="courses">
+            <div class="course">
+                <iframe width="311.7" height="158.84" src="https://www.youtube.com/embed/qrOSqiPmgF8" frameborder="0" allowfullscreen></iframe>
+                <h3>Introduction</h3>
+                <p>1. Lecture • 1m</p>
+            </div>
+            <div class="course">
+                <iframe width="311.7" height="158.84" src="https://www.youtube.com/embed/ofl04SuZotk" frameborder="0" allowfullscreen></iframe>
+                <h3>Integration Introduction</h3>
+                <span>Lecture • 6m left</span>
+            </div>
+            <div class="course">
+                <div class="course-info">
+                    <h3>Course 3: Quiz and Questions</h3>
+                    <p>Quiz • 9 questions</p>
+                </div>
+                <div class="quiz-section">
+                    <h4>Quiz:</h4>
+                    <ul>
+                        <li>Question 1: What is the primary purpose of this course?</li>
+                        <li>Question 2: Describe the key components discussed in the video.</li>
+                        <li>Question 3: How does integration help in system communication?</li>
+                    </ul>
+                    <a href="#" class="start-quiz" onclick="openQuiz()">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quiz Modal -->
+<div id="quizModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeQuiz()">&times;</span>
+        <h3>Course 3 Quiz</h3>
+        <form>
+            <!-- Question 1 -->
+            <div class="question">
+                <label>1. What is the primary purpose of this course?</label><br>
+                <textarea name="q1" rows="3" placeholder="Your answer..."></textarea>
+            </div>
+            <!-- Question 2 -->
+            <div class="question">
+                <label>2. Describe the key components discussed in the video.</label><br>
+                <textarea name="q2" rows="3" placeholder="Your answer..."></textarea>
+            </div>
+            <!-- Question 3 -->
+            <div class="question">
+                <label>3. How does integration help in system communication?</label><br>
+                <textarea name="q3" rows="3" placeholder="Your answer..."></textarea>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    // Function to open the quiz modal
+    function openQuiz() {
+        document.getElementById("quizModal").style.display = "block";
+    }
+
+// Function to close the quiz modal
+function closeQuiz() {
+document.getElementById("quizModal").style.display = "none";
+}
+
+// Close the modal when the user clicks anywhere outside of it
+window.onclick = function(event) {
+var modal = document.getElementById("quizModal");
+if (event.target == modal) {
+    closeQuiz();
+}
+}
+     // Additional functions (runCode, clearCode, submitCode, runTestCase, etc.) would go here
+    </script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<div>
+</div>

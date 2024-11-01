@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System - About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1><i class="fas fa-info-circle"></i> About Us</h1>
+        <nav>
+            <a href="home.html"><i class="fas fa-tachometer-alt"></i> Home</a>
+            <a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+            <a href="javascript:void(0);" onclick="openLoginModal()"><i class="fas fa-list-alt"></i> Tabs</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <section class="about-section">
+            <h2>Our Mission</h2>
+            <p>We aim to provide a comprehensive platform that helps educators manage their courses efficiently while offering students tools to track their progress in programming exercises for C, Python, and Java.</p>
+        </section>
+
+        <section class="cv-section">
+            <h2>Meet Ngo Thanh Vy</h2>
+            <div class="cv-container">
+                <div class="cv-item">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <p><i class="fas fa-envelope"></i> Email: vy@example.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: (123) 456-7890</p>
+                </div>
+                <div class="cv-item">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <ul>
+                        <li>Bachelor of Computer Science</li>
+                        <li>University of Technology</li>
+                        <li>Graduated: 2023</li>
+                    </ul>
+                </div>
+                <div class="cv-item">
+                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                    <ul>
+                        <li>Intern at ABC Tech - Developed web applications</li>
+                        <li>Freelancer - Assisted in multiple projects</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div id="login-form">
+                <h2>Login</h2>
+                <form onsubmit="handleLogin(event)">
+                    <label for="login-username">Username/Email</label>
+                    <input type="text" id="login-username" required>
+                    
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                    
+                    <button type="submit">Login</button>
+                    <p style="text-align: center; margin-top: 10px;">
+                        <a href="#" onclick="showRegistrationForm()" style="color: #00796B; text-decoration: none;">Register</a> | 
+                        <a href="#" style="color: #00796B; text-decoration: none;">Forgot Password?</a>
+                    </p>
+                </form>
+            </div>
+
+            <div id="registration-form" style="display: none;">
+                <h2>Register</h2>
+                <form onsubmit="handleRegistration(event)">
+                    <label for="register-username">Username</label>
+                    <input type="text" id="register-username" required>
+
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                    
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                    
+                    <button type="submit">Register</button>
+                    <p style="text-align: center; margin-top: 10px;">
+                        <a href="#" onclick="showLoginForm()" style="color: #00796B; text-decoration: none;">Already have an account? Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Modal functions
+        function openLoginModal() {
+            const modal = document.getElementById("login-modal");
+            modal.style.display = "block";
+            modal.querySelector("input").focus();
+        }
+
+        function closeLoginModal() {
+            document.getElementById("login-modal").style.display = "none";
+            document.getElementById("login-username").blur();
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Login successful!');
+            closeLoginModal();
+            window.location.href = 'tabs.html';
+        }
+
+        function handleRegistration(event) {
+            event.preventDefault();
+            alert('Registration successful!');
+            closeLoginModal();
+            window.location.href = 'tabs.html';
+        }
+
+        function showRegistrationForm() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("registration-form").style.display = "block";
+        }
+
+        function showLoginForm() {
+            document.getElementById("registration-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("login-modal");
+            if (event.target === modal) {
+                closeLoginModal();
+            }
+        };
+    </script>
+</body>
+
+</html>

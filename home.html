@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="home.css"> <!-- External CSS file -->
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-home"></i> Course Management System</h1>
+            <nav>
+                <a href="home.html" aria-label="Home"><i class="fas fa-tachometer-alt"></i> Home</a>
+                <a href="about.html" aria-label="About"><i class="fas fa-info-circle"></i> About</a>
+                <a href="javascript:void(0);" onclick="openLoginModal()" aria-label="Tabs"><i class="fas fa-list-alt"></i> Tabs</a>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        <div class="content">
+            <h2>Overview</h2>
+            <p>Manage courses and track exercises in C, Python, and Java. Easily navigate through the system with clear functionality and intuitive design.</p>
+            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*-vBaGtfS12kSByM1.jpg" alt="Overview" class="overview-image">
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            
+            <div id="login-form">
+                <h2>Login</h2>
+                <form onsubmit="handleLogin(event)">
+                    <label for="login-username">Username/Email</label>
+                    <input type="text" id="login-username" required>
+                    
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                    
+                    <button type="submit">Login</button>
+                    <p style="text-align: center; margin-top: 10px;">
+                        <a href="#" onclick="showRegistrationForm()" style="color: #00796B; text-decoration: none;">Register</a> | 
+                        <a href="#" style="color: #00796B; text-decoration: none;">Forgot Password?</a>
+                    </p>
+                </form>
+            </div>
+
+            <div id="registration-form" style="display: none;">
+                <h2>Register</h2>
+                <form onsubmit="handleRegistration(event)">
+                    <label for="register-username">Username</label>
+                    <input type="text" id="register-username" required>
+
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                    
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                    
+                    <button type="submit">Register</button>
+                    <p style="text-align: center; margin-top: 10px;">
+                        <a href="#" onclick="showLoginForm()" style="color: #00796B; text-decoration: none;">Already have an account? Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="home.js" defer></script>
+</body>
+
+</html>

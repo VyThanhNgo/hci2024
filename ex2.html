@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="ex1.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/java/java.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <nav>
+                <a href="home.html" class="logo"><i class="fas fa-home"></i> Course Management System</a>
+                <a href="lab1.html"><i class="fas fa-book"></i> Course Management (Lab 1)</a>
+                <a href="lab2.html"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+                <a href="lab3.html"><i class="fas fa-share-alt"></i> Share Materials (Lab 3)</a>
+                <a href="lab5.html"><i class="fas fa-book-open"></i> My Learning (Lab 5)</a>
+                <a href="lab6.html"><i class="fas fa-chart-line"></i> Result (Lab 6)</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div id="exercise-content">
+            <div id="exercise-details">
+                <h2 id="exercise-title">Find The Factorial</h2>
+                <div>
+                    <label for="language-switcher">Select Language:</label>
+                    <select id="language-switcher" onchange="updateEditor()">
+                        <option value="c">C</option>
+                    </select>
+                </div>
+                <textarea id="code-editor" rows="10" placeholder="Write your code here..."></textarea>
+                <div class="buttons">
+                    <button onclick="runCode()">Run Code</button>
+                    <button onclick="clearCode()">Clear Code</button>
+                    <button onclick="submitCode()">Submit Code</button>
+                </div>
+                <div id="output-section">
+                    <h3>Output</h3>
+                    <pre id="output"></pre>
+                </div>
+                <div class="test-case-section">
+                    <h3>Test Cases</h3>
+                    <div class="test-case">
+                        <label>Input:</label>
+                        <input type="text" id="test-input" placeholder="Enter test case input...">
+                        <button onclick="runTestCase()">Run Test Case</button>
+                    </div>
+                    <div id="test-results"></div>
+                </div>
+                <div class="navigation">
+                    <button onclick="backToExercises()">Return to Exercises</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="ex1.js" defer></script>
+</body>
+
+</html>

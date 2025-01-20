@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lab2.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/java/java.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <nav>
+                <a href="home.html" class="logo"><i class="fas fa-home"></i> Course Management System</a>
+                <a href="lab1.html"><i class="fas fa-book"></i> Course Management (Lab 1)</a>
+                <a href="lab2.html"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+                <a href="lab3.html"><i class="fas fa-share-alt"></i> Share Materials (Lab 3)</a>
+                <a href="lab5.html"><i class="fas fa-book-open"></i> My Learning (Lab 5)</a>
+                <a href="lab6.html"><i class="fas fa-chart-line"></i> Result (Lab 6)</a>
+            </nav>
+        </div>
+    </header>
+    <div>
+    </div>
+    <main>
+        <section class="excerise">
+        <!-- Student Exercises Section (Lab 2) -->
+        <div id="exercise-section" class="container">
+            <h2>Programming Exercises</h2>
+            <!-- Filters -->
+            <div class="filters">
+                <label for="language-filter">Filter by Language:</label>
+                <select id="language-filter" onchange="filterExercises()">
+                    <option value="all">All Languages</option>
+                    <option value="c">C</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                </select>
+                <label for="search-filter">Search Exercises:</label>
+                <input type="text" id="search-filter" onkeyup="searchExercises()" placeholder="Search by keywords...">
+            </div>
+            <!-- Exercise List -->
+            <div id="exercise-list">
+                <div class="exercise" data-language="python">
+                    <h3>Exercise 1: Reverse a String</h3>
+                    <p class="description">Write a program to reverse a given string.</p>
+                    <p><strong>Language:</strong> Python</p>
+                    <p class="difficulty">Difficulty: Easy</p>
+                    <p class="status">Status: Not Started</p>
+                    <a href="ex1.html"><button>Start Exercise</button></a>               
+                </div>
+                <div class="exercise" data-language="c">
+                    <h3>Exercise 2: Find The Factorial</h3>
+                    <p class="description">Calculate the factorial of a number.</p>
+                    <p><strong>Language:</strong> C</p>
+                    <p class="difficulty">Difficulty: Medium</p>
+                    <p class="status">Status: In Progress</p>
+                    <a href="ex2.html"><button>Start Exercise</button></a>               
+                </div>
+                <div class="exercise" data-language="java">
+                    <h3>Exercise 3: Binary Search</h3>
+                    <p class="description">Implement a binary search algorithm.</p>
+                    <p><strong>Language:</strong> Java</p>
+                    <p class="difficulty">Difficulty: Hard</p>
+                    <p class="status">Status: Completed</p>
+                    <a href="ex3.html"><button>Start Exercise</button></a>               
+                </section>
+            </div>
+            </main>
+
+    <script src="lab2.js" defer></script>
+</body>
+
+</html>

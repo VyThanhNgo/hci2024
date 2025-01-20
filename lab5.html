@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lab5.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/java/java.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <a href="home.html" class="logo"><i class="fas fa-home"></i> Course Management System</a>
+                <a href="lab1.html"><i class="fas fa-book"></i> Course Management (Lab 1)</a>
+                <a href="lab2.html"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+                <a href="lab3.html"><i class="fas fa-share-alt"></i> Share Materials (Lab 3)</a>
+                <a href="lab5.html"><i class="fas fa-book-open"></i> My Learning (Lab 5)</a>
+                <a href="lab6.html"><i class="fas fa-chart-line"></i> Result (Lab 6)</a>
+            </nav>
+        </div>
+    </header>
+</div>
+        <header class="content-header">
+            <h1>My learning</h1>
+            <p>87hr 36min watched <span>|</span> <a href="#">View all activity</a></p>
+            <nav>
+                <a href="#" data-section="allcourses" onclick="showSection('allcourses')">All courses</a>
+                <a href="#" data-section="learningpaths" onclick="showSection('learningpaths')">Learning paths</a>
+                <a href="#" data-section="certifications" onclick="showSection('certifications')" class="active">Certifications</a>
+                <a href="#" data-section="archivedCourses" onclick="showSection('archivedCourses')">Archived</a>
+                <a href="#" data-section="learningTools" onclick="showSection('learningTools')">Learning tools</a>
+            </nav>            
+        </header>
+</main>
+            <section id="certifications">
+                <div class="certifications">
+                <h2>My badges</h2>
+                <p class="badges-info">You have earned and uploaded <strong>0 badges</strong> <span>ⓘ</span></p>
+                <div class="button-container">
+                    <button class="import-badge">Import new badge</button>
+                </div>
+                <p class="certification-info">
+                    Currently, there are no badges uploaded to your profile. Begin your journey towards your certification goals or
+                    upload your third-party badges to your profile and impress your manager and peers with your accomplishments.
+                    Start preparing for your next certificate today!
+                </p>
+        
+                <h2>Certification preparation</h2>
+                <p class="certification-status">You are preparing for <strong>4 certifications</strong> <span>ⓘ</span></p>
+                <div class="button-container explore-cert-container">
+                    <button class="explore-cert">Explore certification preparation</button>
+                </div>            
+                <div class="certifications-list">
+                    <div class="certification-card">
+                        <img src="img/Oracle_Associates_Badge__1_.jpg" alt="Oracle Certified Associate Badge" style="width: 100px; height: auto; margin-bottom: 10px;">
+                        <div>
+                            <h3>Oracle Certified Associate, Java SE 8 Programmer</h3>
+                            <p class="certification-provider">Oracle</p>
+                        </div>
+                    </div>
+                    <div class="certification-card">
+                        <img src="img/Brightest_CTFL.jpg" alt="ISTQB Certified Tester Foundation Level Badge" style="width: 100px; height: auto; margin-bottom: 10px;">
+                        <div>
+                            <h3>ISTQB® Certified Tester Foundation Level (CTFL)</h3>
+                            <p class="certification-provider">Brightest</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="archivedCourses">
+                <div class="archived-course">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkiCyWynNUr01ZnIgen_39qexpdWylyRJ1Lw&s" alt="FPT Corporate Social Responsibility Training Badge">
+                    <div class="course-content">
+                        <h3>FPT Corporate Social Responsibility Training 2024</h3>
+                        <p class="course-provider">FSOFT Content Development</p>
+                        <div class="divider"></div>
+                        <div class="completion-container">
+                            <p class="completion-status">100% complete</p>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span>⭐⭐⭐⭐</span> <span>Your rating</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="learningTools">
+                <p class="description">Explore a diverse range of courses and take advantage of these versatile tools to gain knowledge, skills, and confidence at your own pace.</p>
+                
+                <div class="tool-cards">
+                    <div class="tool-card">
+                        <img src="img/2.jpg" alt="Learning reminders" />
+                        <div class="tool-text">
+                            <h2>Learning reminders</h2>
+                            <p class="tool-subtitle">Set time aside to learn and get reminders using your scheduler.</p>
+                            <p class="tool-message">You currently have no ongoing reminders.</p>
+                            <a href="#" class="tool-link">See more</a>
+                        </div>
+                    </div>
+        
+                    <div class="tool-card">
+                        <img src="img/3.jpg" alt="Reflections" />
+                        <div class="tool-text">
+                            <h2>Reflections <span class="beta-badge">Beta</span></h2>
+                            <p class="tool-subtitle">Take time to reflect to strengthen your learning.</p>
+                            <p class="tool-message">You currently have no recorded reflections on your learning journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>        
+    <script src="lab5.js" defer></script>
+</body>
+
+</html>

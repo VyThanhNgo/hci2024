@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lab1.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/java/java.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <nav>
+                <a href="home.html" class="logo"><i class="fas fa-home"></i> Course Management System</a>
+                <a href="lab1.html" class="nav-link"><i class="fas fa-book"></i> Course Management (Lab 1)</a>
+                <a href="lab2.html" class="nav-link"><i class="fas fa-code"></i> Student Exercises (Lab 2)</a>
+                <a href="lab3.html" class="nav-link"><i class="fas fa-share-alt"></i> Share Materials (Lab 3)</a>
+                <a href="lab5.html" class="nav-link"><i class="fas fa-book-open"></i> My Learning (Lab 5)</a>
+                <a href="lab6.html"><i class="fas fa-chart-line"></i> Result (Lab 6)</a>
+            </nav>
+        </div>
+    </header>    
+    <main>
+<div>
+</div>
+<main>
+    <section class="course-creation-section">
+        <!-- Course Management Section (Lab 1) -->
+        <div id="course-section" class="container" style="display: block;">
+            <h2>Create a New Course</h2>
+            <form>
+                <label for="course_id">Course ID (Auto-generated)</label>
+                <input type="text" id="course_id" readonly value="12345">
+                <label for="course_name">Course Name (Required)</label>
+                <input type="text" id="course_name" maxlength="255" required>
+                <label for="course_description">Course Description (Optional)</label>
+                <textarea id="course_description" rows="5"></textarea>
+                <label for="created_by">Instructor</label>
+                <select id="created_by">
+                    <option value="1">John Doe</option>
+                    <option value="2">Jane Smith</option>
+                </select>
+                <label for="created_at">Created At (Auto-generated)</label>
+                <input type="text" id="created_at" readonly value="2024-10-01">
+                <label for="updated_at">Last Updated (Auto-generated)</label>
+                <input type="text" id="updated_at" readonly value="2024-10-05">
+                <button type="submit">Create Course</button>
+            </form>
+        </div>
+    </section>    
+    <script src="lab1.js" defer></script>
+</body>
+    
+</html>>
